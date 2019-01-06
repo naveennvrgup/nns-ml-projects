@@ -46,12 +46,20 @@ cfiers = [
             QuadraticDiscriminantAnalysis()
         ]
 
-best=
+
+baccu=0
+bcfier='letssee'
+
 for i in range(len(cnames)):
     print(cnames[i])
     accs = cross_val_score(cfiers[i],x,y,cv=15)
     print(accs.mean(),accs.std())
-    
+    if accs.mean()>baccu:
+        baccu=accs.mean()
+        bcfier=cnames[i]
     print()
+    
+print('best classifier for the dataset')
+print(baccu,bcfier)
     
     
